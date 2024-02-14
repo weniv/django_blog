@@ -1,9 +1,10 @@
-{% extends "base.html" %} {% block content%}
-<div class="container">
-  <h1>{{ post.title }}</h1>
-  <p>{{ post.content }}</p>
-  <p>{{ post.created_at }}</p>
-  <p>{{ post.updated_at }}</p>
-  <p>By {{ post.author }}</p>
-</div>
+{% extends "base.html" %} {% block content %}
+    <div class="container">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.content }}</p>
+        <p>{{ post.created_at }}</p>
+        <p>{{ post.updated_at }}</p>
+        <p>By {{ post.author }}</p>
+    </div>
 {% endblock %}
+<button type="button"><a href={% url 'blog' %} > 글 수정하기</div>

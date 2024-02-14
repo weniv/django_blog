@@ -13,18 +13,32 @@ def home(request):
 
 @login_required(login_url="accounts:login")
 def post_details(request, pk):
-    if request.user.is_authenticated:
 
-        post_data = Post.objects.get(pk=pk)
-        if post_data.author_id == request.user.pk:
-            data = {"post": post_data}
+    post_data = Post.objects.get(pk=pk)
+    if post_data.author_id == request.user.pk:
+        data = {"post": post_data}
 
-            return render(request, "blog/post_detail.html", data)
-        else:
-            return redirect("blog:post_list")
-
+        return render(request, "blog/post_detail.html", data)
     else:
-        return redirect("accounts:login")
+        return redirect("blog:post_list")
+
+
+@login_required(login_url="accounts:login")
+def post_update(request, pk):
+    post_data = Post.objects.get(pk=pk)
+    if post_data.author_id == request.user.pk:
+        if request.method == "POST":
+            title = request.POST.get("title")
+            content = request.POST.get("content")
+            post_data.title = title
+            post_data.content = content
+            post_data.save()
+            return redirect("blog:post_list")
+        else:
+            data = {"post": post_data}
+            return render(request, "blog/post_update.html", data)
+    else:
+        return redirect("blog:post_list")
 
 
 @login_required(login_url="accounts:login")
@@ -37,4 +51,4 @@ def post_new(request):
         post.save()
         return redirect("blog:post_list")
     else:
-        return render(request, "blog/post_new.html")
+        return render(request, "blog/post_update.html")
