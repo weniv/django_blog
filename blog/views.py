@@ -51,4 +51,4 @@ def post_new(request):
         post.save()
         return redirect("blog:post_list")
     else:
-        return render(request, "blog/post_update.html")
+        return render(request, "blog/post_new.html")
