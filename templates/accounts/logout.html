@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h2>로그아웃 되었습니다</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'accounts:login' %}">다시 로그인하기</a>
+        </small>
+    </div>    
+{% endblock content %}

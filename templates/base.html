@@ -1,33 +1,53 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-
-    <title>블로그 메인페이지</title>
-
-    <!-- Bootstrap core CSS -->
+    <title>MyBlog</title>
     <link
-      href="{% static 'blog/vendor/bootstrap/css/bootstrap.min.css' %}"
       rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
     />
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'blog/css/style.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}" />
   </head>
-
   <body>
-    {% include 'partials/_navbar.html' %} {% block content %} {% endblock
-    content %} {% include 'partials/_footer.html' %}
-    <!-- Bootstrap core JavaScript -->
+    <div class="header">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="{% url 'blog:post_list' %}">Blog</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'blog:post_list' %}">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'blog:post_new' %}">New</a>
+            </li>
+            <li class="nav-item d-flex">
+              <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
 
-    <script src="{% static 'blog/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'blog/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <div class="content">{% block content %} {% endblock %}</div>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
   </body>
 </html>
