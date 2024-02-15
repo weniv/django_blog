@@ -13,7 +13,6 @@ def home(request):
 
 @login_required(login_url="accounts:login")
 def post_details(request, pk):
-
     post_data = Post.objects.get(pk=pk)
     if post_data.author_id == request.user.pk:
         data = {"post": post_data}
@@ -52,3 +51,12 @@ def post_new(request):
         return redirect("blog:post_list")
     else:
         return render(request, "blog/post_new.html")
+
+
+def post_delete(request, pk):
+    post_data = Post.objects.get(pk=pk)
+    if post_data.author_id == request.user.pk:
+        post_data.delete()
+        return redirect("blog:post_list")
+    else:
+        return redirect("blog:post_list")

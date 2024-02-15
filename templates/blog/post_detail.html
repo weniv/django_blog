@@ -6,5 +6,8 @@
         <p>{{ post.updated_at }}</p>
         <p>By {{ post.author }}</p>
     </div>
+    <button type="button" class="btn btn-secondary"><a href={% url 'blog:post_update' post.pk %}> 글 수정하기</a></button>
+    <button type="button" class="btn btn-danger"><a href={% url 'blog:post_delete' post.pk %}> 글 삭제하기</a></button>
 {% endblock %}
-<button type="button"><a href={% url 'blog' %} > 글 수정하기</div>
+
+```
