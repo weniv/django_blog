@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-    <form action="{% url 'blog:post_update ' %}" method="post">
+    <form action="{% url 'blog:post_update' post.pk %}" method="post">
         {% csrf_token %}
         <h2 class="post_update">글 수정하기</h2>
         <div class="container">
@@ -20,8 +20,8 @@
                         id="content"
                         name="content"
                         rows="7"
-                        value="{{ post.content }}"
-                ></textarea>
+                >{{ post.content }}</textarea>
+
             </div>
             <br/>
             <button type="submit" class="btn btn-primary">수정하기</button>
@@ -29,7 +29,4 @@
 
         </div>
     </form>
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-        삭제하기
-    </button>
 {% endblock %}
