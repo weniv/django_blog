@@ -4,7 +4,7 @@ from .models import Post
 
 
 @login_required(login_url="accounts:login")
-def home(request):
+def post_list(request):
     user_pk = request.user.pk
     posts = Post.objects.filter(author=user_pk).order_by("-created_at")
     data = {"posts": posts}

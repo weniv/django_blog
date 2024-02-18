@@ -1,32 +1,27 @@
 {% extends 'base.html' %} {% block content %}
-    <form action="{% url 'blog:post_update' post.pk %}" method="post">
-        {% csrf_token %}
-        <h2 class="post_update">글 수정하기</h2>
-        <div class="container">
-            <div class="form-group">
-                <label for="title"><h5>제목</h5></label>
-                <input
-                        type="text"
-                        class="form-control"
-                        id="title"
-                        name="title"
-                        value="{{ post.title }}"
-                />
-            </div>
-            <div class="form-group">
-                <label for="content"><h5>내용</h5></label>
-                <textarea
-                        class="form-control"
-                        id="content"
-                        name="content"
-                        rows="7"
-                >{{ post.content }}</textarea>
-
-            </div>
-            <br/>
-            <button type="submit" class="btn btn-primary">수정하기</button>
-            <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">취소</a>
-
-        </div>
-    </form>
+<form action="{% url 'blog:post_update' post.pk %}" method="post">
+  {% csrf_token %}
+  <h2 class="post_update">글 수정하기</h2>
+  <div class="container">
+    <div class="form-group">
+      <label for="title"><h5>제목</h5></label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        value="{{ post.title }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="content"><h5>내용</h5></label>
+      <textarea class="form-control" id="content" name="content" rows="7">
+{{ post.content }}</textarea
+      >
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">수정하기</button>
+    <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">취소</a>
+  </div>
+</form>
 {% endblock %}

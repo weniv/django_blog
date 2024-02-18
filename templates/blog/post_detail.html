@@ -1,57 +1,60 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 
-    <div class="container">
-        <div class="form-group">
-            <label for="title"><h5>제목</h5></label>
-            <input
-                    type="text"
-                    class="form-control"
-                    id="title"
-                    name="title"
-                    value="{{ post.title }}"
-                    disabled
+<div class="container">
+  <div class="form-group">
+    <label for="title"><h5>제목</h5></label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      value="{{ post.title }}"
+      disabled
+    />
+  </div>
+  <div class="form-group">
+    <label for="content"><h5>내용</h5></label>
+    <textarea
+      class="form-control"
+      id="content"
+      name="content"
+      rows="7"
+      disabled
+    >
+{{ post.content }}</textarea
+    >
+  </div>
+  <div class="form-group">
+    <label for="created_at"><h5>작성일</h5></label>
+    <input
+      type="text"
+      class="form-control"
+      id="created_at"
+      name="created_at"
+      value="{{ post.created_at }}"
+      disabled
+    />
+  </div>
+  <div class="form-group">
+    <label for="author"><h5>작성자</h5></label>
+    <input
+      type="text"
+      class="form-control"
+      id="author"
+      name="author"
+      value="{{ post.author }}"
+      disabled
+    />
+  </div>
+  <br />
 
-            />
-        </div>
-        <div class="form-group">
-            <label for="content"><h5>내용</h5></label>
-            <textarea
-                    class="form-control"
-                    id="content"
-                    name="content"
-                    rows="7"
-                    disabled
-            >{{ post.content }}</textarea>
+  <button type="button" class="btn btn-secondary">
+    <a href="{% url 'blog:post_update' post.pk %}"> 글 수정하기</a>
+  </button>
+  <button type="button" class="btn btn-danger">
+    <a href="{% url 'blog:post_delete' post.pk %}"> 글 삭제하기</a>
+  </button>
+</div>
 
-        </div>
-        <div class="form-group">
-            <label for="created_at"><h5>작성일</h5></label>
-            <input
-                    type="text"
-                    class="form-control"
-                    id="created_at"
-                    name="created_at"
-                    value="{{ post.created_at }}"
-                    disabled
-            />
-        </div>
-        <div class="form-group">
-            <label for="author"><h5>작성자</h5></label>
-            <input
-                    type="text"
-                    class="form-control"
-                    id="author"
-                    name="author"
-                    value="{{ post.author }}"
-                    disabled
-            />
-        </div>
-        <br/>
-
-
-        <button type="submit" class="btn btn-secondary"><a href={% url 'blog:post_update' post.pk %}> 글 수정하기</a>
-        </button>
-        <button type="submit" class="btn btn-danger"><a href={% url 'blog:post_delete' post.pk %}> 글 삭제하기</a></button>
-
-    </div>
 {% endblock %}
